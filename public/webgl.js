@@ -2,66 +2,53 @@ var canvas = document.getElementById("canvas")
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+
 var gl = canvas.getContext("webgl2")
 
 
 if(!gl){
-    alert("Your browser does not support webgl" + "https://get.webgl.org/")
+    alert("Your browser does not support webgl.\n" + "Go to https://get.webgl.org/ to find out more.")
 }
 
-//Sets background of canvas
-gl.clearColor(.5, .5, 1, 1)
+
+//Creates and compiles vertex and fragment shaders
+const vertexShaderSource = `
+void main(){
+    gl_Position = vec4(0,0,0,1);
+    gl_PointSize = 50.0;
+}`
+const vs = gl.createShader(gl.VERTEX_SHADER)
+gl.shaderSource(vs, vertexShaderSource)
+gl.compileShader(vs)
+
+const fragmentShaderSource =  `
+precision highp float;
+void main(){
+    gl_FragColor = vec4(0, 0, 0, 1.0);
+}`
+
+const fs = gl.createShader(gl.FRAGMENT_SHADER)
+  gl.shaderSource(fs, fragmentShaderSource)
+  gl.compileShader(fs)
+
+
+const program = gl.createProgram()
+
+gl.attachShader(program, vs);
+gl.attachShader(program, fs);
+
+gl.linkProgram(program)
+if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.error('prog info-log:', gl.getProgramInfoLog(program))
+    console.error('vert info-log: ', gl.getShaderInfoLog(vs))
+    console.error('frag info-log: ', gl.getShaderInfoLog(fs))
+}
+gl.useProgram(program)
+
+//Backroundcolor
+gl.clearColor(1, 1, 1, 1)
 gl.clear(gl.COLOR_BUFFER_BIT)
 
+//draws points
+gl.drawArrays(gl.POINTS, 0, 1)
 
-//https://radzion.com/blog/linear-algebra/vectors
-class Vector {
-    constructor(...components) {
-      this.components = components
-    }
-
-    add({ components }) {
-        return new Vector(
-        ...components.map((component, index) => this.components[index] + component)
-        )
-    }
-    subtract({ components }) {
-        return new Vector(
-        ...components.map((component, index) => this.components[index] - component)
-        )
-    }
-    scaleBy(number) {
-        return new Vector(
-          ...this.components.map(component => component * number)
-        )
-    }
-
-//Done by Me
-    x(){
-        return this.component[0]
-    }
-    y(){
-        return this.component[1]
-    }
-    z(){
-        return this.component[2]
-    }
-
-
-  }
-
-  class point{
-    
-    constructor(position){
-        this.position = position;
-    }
-
-    draw(){
-        var vertices = [
-            position.x(), position.y(), position.z()
-        ]
-    }
-
-  }
-  
-  

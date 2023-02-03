@@ -11,7 +11,13 @@
 <body>
     <h1>Heading</h1>
     <canvas id="canvas">this</canvas>
-    <script src="webgl.js"></script>
 
+    <!-- Shaders -->
+
+    <script>  type="x-shader/x-fragment"; src="vertex.glsl"</script>
+    <script>  type="x-shader/x-fragment"; src="fragment.glsl"</script>
+
+    <script src="webgl.js"></script>
+    <script src="point.js"></script>
 </body>
 </html>
