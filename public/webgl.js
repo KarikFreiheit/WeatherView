@@ -6,18 +6,7 @@ if(!gl){
     alert("Your browser does not support webgl.\n" + "Go to https://get.webgl.org/ to find out more.")
 }
 
-//Parse Json into objects, recieves data from data.js loadJSON function
-function populateData(objectData){
-    
-    for(var i = 0; i < objectData.length; objectData++){
-        for(var property in objectData[i]){
-            console.log(property + "\n")
-        }
-        console.log("\n")
-    }
-    console.log("Array Populated with data: " + objectData)
 
-}
 
 //Creates and compiles vertex and fragment shaders
 const vertexShaderSource = `
@@ -54,12 +43,26 @@ if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     console.error('frag info-log: ', gl.getShaderInfoLog(fs))
 }
 
-fetch('/')
 
-var vertices = new Float32Array([
-    .5, .5,
-    -.5, -.5,
-])
+var vertices = new Float32Array(4[2])
+
+//Parse Json into objects, recieves data from data.js loadJSON function
+function populateData(objectData){
+    for(let points in objectData){
+        console.log("X: " + points.x)
+        console.log("Y: " + points.y)
+
+        
+        //vertices[i[0]] = ((canvas.width / 2) - objectData[i].x) / (canvas.width / 2)
+        //vertices[i[1]] = ((canvas.height / 2) - objectData[i].y) / (canvas.height / 2)
+        //console.log("X: " + vertices[i[0]] + "Y: " + vertices[i[1]])
+        
+        
+        console.log("Array Populated with data: " + objectData)
+    }
+    
+
+}
 
 var buffer = gl.createBuffer()
 gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
@@ -69,6 +72,7 @@ gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
 gl.useProgram(program)
 
 //Passes Vertex positions into vertex shader 'position' attribute
+
 program.position = gl.getAttribLocation(program, 'position')
 gl.enableVertexAttribArray(program.position)
 gl.vertexAttribPointer(program.position, 2, gl.FLOAT, false, 0, 0)
