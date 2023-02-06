@@ -1,21 +1,23 @@
 var canvas = document.getElementById("canvas")
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-data = fetch("./vectors.json").then((data) => {
-    console.log(data)
-})
-console.log(data[0])
-
-
-
 var gl = canvas.getContext("webgl2")
-
-
 if(!gl){
     alert("Your browser does not support webgl.\n" + "Go to https://get.webgl.org/ to find out more.")
 }
 
+//Parse Json into objects, recieves data from data.js loadJSON function
+function populateData(objectData){
+    
+    for(var i = 0; i < objectData.length; objectData++){
+        for(var property in objectData[i]){
+            console.log(property + "\n")
+        }
+        console.log("\n")
+    }
+    console.log("Array Populated with data: " + objectData)
 
+}
 
 //Creates and compiles vertex and fragment shaders
 const vertexShaderSource = `
@@ -56,7 +58,7 @@ fetch('/')
 
 var vertices = new Float32Array([
     .5, .5,
-    -.5, -.5
+    -.5, -.5,
 ])
 
 var buffer = gl.createBuffer()
