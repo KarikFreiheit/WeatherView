@@ -48,9 +48,10 @@ var vertices = new Float32Array(4[2])
 
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
+    
+    //console.log(typeof objectData.points + " " + typeof objectData)
     for(let points in objectData){
-        console.log("X: " + points.x)
-        console.log("Y: " + points.y)
+        console.log("Point: " + points + " X: " + objectData[points].x + " Y: " + objectData[points].y + " Direction: " +  objectData[points].direction + " Magnitude: " +  objectData[points].magnitude)
 
         
         //vertices[i[0]] = ((canvas.width / 2) - objectData[i].x) / (canvas.width / 2)
@@ -58,10 +59,8 @@ function populateData(objectData){
         //console.log("X: " + vertices[i[0]] + "Y: " + vertices[i[1]])
         
         
-        console.log("Array Populated with data: " + objectData)
     }
     
-
 }
 
 var buffer = gl.createBuffer()
