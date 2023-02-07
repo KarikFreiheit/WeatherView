@@ -43,25 +43,32 @@ if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     console.error('frag info-log: ', gl.getShaderInfoLog(fs))
 }
 
+var vertices = new Float32Array([2])
 
-var vertices = new Float32Array(4[2])
 
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
     
     //console.log(typeof objectData.points + " " + typeof objectData)
-    for(let points in objectData){
-        console.log("Point: " + points + " X: " + objectData[points].x + " Y: " + objectData[points].y + " Direction: " +  objectData[points].direction + " Magnitude: " +  objectData[points].magnitude)
-
+    for(let points = 0; points < objectData.length * 2; points++){
         
-        //vertices[i[0]] = ((canvas.width / 2) - objectData[i].x) / (canvas.width / 2)
-        //vertices[i[1]] = ((canvas.height / 2) - objectData[i].y) / (canvas.height / 2)
-        //console.log("X: " + vertices[i[0]] + "Y: " + vertices[i[1]])
+
+        if(points % 2 == 0){
+            vertices[points] = ((canvas.width / 2) - objectData[points].x) / (canvas.width / 2)
+            console.log(" Calculated X: " + vertices[points])
+        }else{
+            vertices[points] = ((canvas.height / 2) - objectData[points].y) / (canvas.height / 2)
+            console.log(" Calculated Y: " + vertices[points])
+        }
+        console.log("Point: " + points + " X: " + objectData[points].x + " Y: " + objectData[points].y + " Direction: " +  objectData[points].direction + " Magnitude: " +  objectData[points].magnitude)
+        console.log(vertices)
         
         
     }
     
 }
+
+
 
 var buffer = gl.createBuffer()
 gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
