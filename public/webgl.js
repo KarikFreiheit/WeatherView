@@ -43,51 +43,48 @@ if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     console.error('frag info-log: ', gl.getShaderInfoLog(fs))
 }
 
-var vertices = new Float32Array([2])
 
+var verts = []
 
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
     
     //console.log(typeof objectData.points + " " + typeof objectData)
-    for(let points = 0; points < objectData.length * 2; points++){
+    for(let i = 0; i < objectData.length; i++){
+        //x should be negative
+        verts.push(-((canvas.width / 2) - objectData[i].x) / (canvas.width / 2), ((canvas.height/ 2) - objectData[i].y) / (canvas.height / 2))
         
+        
+        console.log(verts)
 
-        if(points % 2 == 0){
-            vertices[points] = ((canvas.width / 2) - objectData[points].x) / (canvas.width / 2)
-            console.log(" Calculated X: " + vertices[points])
-        }else{
-            vertices[points] = ((canvas.height / 2) - objectData[points].y) / (canvas.height / 2)
-            console.log(" Calculated Y: " + vertices[points])
-        }
-        console.log("Point: " + points + " X: " + objectData[points].x + " Y: " + objectData[points].y + " Direction: " +  objectData[points].direction + " Magnitude: " +  objectData[points].magnitude)
-        console.log(vertices)
         
-        
+        var vertices = new Float32Array(verts)
+
+        var buffer = gl.createBuffer()
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
+
+
+        gl.useProgram(program)
+
+        //Passes Vertex positions into vertex shader 'position' attribute
+
+        program.position = gl.getAttribLocation(program, 'position')
+        gl.enableVertexAttribArray(program.position)
+        gl.vertexAttribPointer(program.position, 2, gl.FLOAT, false, 0, 0)
+
+
+        //Backroundcolor
+        gl.clearColor(1, 1, 1, 1)
+        gl.clear(gl.COLOR_BUFFER_BIT)
+
+        //draws points
+        gl.drawArrays(gl.POINTS, 0, vertices.length)
     }
     
 }
 
 
 
-var buffer = gl.createBuffer()
-gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
-gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
 
-
-gl.useProgram(program)
-
-//Passes Vertex positions into vertex shader 'position' attribute
-
-program.position = gl.getAttribLocation(program, 'position')
-gl.enableVertexAttribArray(program.position)
-gl.vertexAttribPointer(program.position, 2, gl.FLOAT, false, 0, 0)
-
-
-//Backroundcolor
-gl.clearColor(1, 1, 1, 1)
-gl.clear(gl.COLOR_BUFFER_BIT)
-
-//draws points
-gl.drawArrays(gl.POINTS, 0, vertices.length)
 
