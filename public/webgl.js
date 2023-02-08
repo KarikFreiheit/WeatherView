@@ -7,8 +7,18 @@ if(!gl){
 }
 
 
+const arrowShaderSource = `
+attribute vec2 position;
+void main(){
+    gl_Position = vec4(position, 0, 1);
+    gl_Left = vec4(position.x - .05, position.y + .01 0, 1);
+    gl_Right = vec4(position.x + .05, position.y + .01, 0, 1);
+    gl_Bottom = vec4(position.x, position.y - .05, 0, 1);
+    gl_Top = vec4(position.x, position.y + .05, 0, 1);
 
-//Creates and compiles vertex and fragment shaders
+}
+`
+//Creates and compiles vertex and fragment shaders for a
 const vertexShaderSource = `
 attribute vec2 position;
 void main(){
@@ -25,6 +35,10 @@ precision highp float;
 void main(){
     gl_FragColor = vec4(0, 0, 0, 1.0);
 }`
+
+
+
+
 
 const fs = gl.createShader(gl.FRAGMENT_SHADER)
   gl.shaderSource(fs, fragmentShaderSource)
@@ -48,17 +62,23 @@ var verts = []
 
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
+    let width = canvas.width
+    let halfWidth = width / 2
+    let height = canvas.height
+    let halfHeight = height / 2
+    let length = objectData.length
     
-    //console.log(typeof objectData.points + " " + typeof objectData)
-    for(let i = 0; i < objectData.length; i++){
-        //x should be negative
-        verts.push(-((canvas.width / 2) - objectData[i].x) / (canvas.width / 2), ((canvas.height/ 2) - objectData[i].y) / (canvas.height / 2))
-        
-        
-        console.log(verts)
-
-        
-        var vertices = new Float32Array(verts)
+       
+        for(let i = 0; i < length; i++){
+            //Converts X and Y to webGL X and Y of values between 0-1
+            let webX = (1.5 * objectData[i].x - halfWidth) / halfWidth
+            let webY = (1.5 * objectData[i].y - halfHeight) / halfHeight
+            verts.push(webX, webY)
+            
+            var vertices = new Float32Array(verts)
+            console.log(verts)
+        }
+       
 
         var buffer = gl.createBuffer()
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
@@ -75,12 +95,12 @@ function populateData(objectData){
 
 
         //Backroundcolor
-        gl.clearColor(1, 1, 1, 1)
+        gl.clearColor(.5, 1, 1, 1)
         gl.clear(gl.COLOR_BUFFER_BIT)
 
         //draws points
         gl.drawArrays(gl.POINTS, 0, vertices.length)
-    }
+    
     
 }
 
