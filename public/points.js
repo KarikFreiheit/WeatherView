@@ -2,6 +2,7 @@ var canvas = document.getElementById("canvas")
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var gl = canvas.getContext("webgl2")
+gl.viewport(0,0, )
 var shown = true
 if(!gl){
     alert("Your browser does not support webgl.\n" + "Go to https://get.webgl.org/ to find out more.")
@@ -62,9 +63,13 @@ if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
 
 
 var verts = []
+var data
+var vertices
+var points = []
 
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
+    data = objectData
     let width = canvas.width
     let halfWidth = width / 2
     let height = canvas.height
@@ -74,24 +79,37 @@ function populateData(objectData){
        
         for(let i = 0; i < length; i++){
             //Converts X and Y to webGL X and Y of values between 0-1
-            let webX = (2 * (objectData[i].x / halfWidth)) - 1;
-            let webY = 1 - (2 * (objectData[i].y / halfHeight));
+            let webX = 2 * (objectData[i].x / width) - 1;
+            let webY = 1 - 2 * (objectData[i].y / height);
 
             //let webX = (objectData[i].x - halfWidth) / halfWidth
             //let webY = (objectData[i].y - halfHeight) / halfHeight
             verts.push(webX, webY)
             
-            var vertices = new Float32Array(verts)
-            console.log(verts)
+            vertices = new Float32Array(verts)
+
+            let point = {
+                x: webX,
+                y: webY,
+                velocity: 0
+            }
+    
+            points.push(point)
+            console.log("X: " + point.x + " Y: " + point.y + " Velocity: " + point.velocity)
         }
-       
 
-       display(vertices)
 
+
+        
+
+        display(vertices)
+        console.log(verts)
+        
     
     
 }
 function display(vertices){
+
     var buffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
@@ -118,11 +136,13 @@ canvas.addEventListener("click", () => {
     if(shown == true){
         gl.clear(gl.COLOR_BUFFER_BIT)
         shown= false
+    }else if(canvas.width != window.innerWidth || canvas.height != window.innerHeight){
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        populateData(data)
     }else{
         display(vertices)
         shown = true
     }
     
 })
-
-
