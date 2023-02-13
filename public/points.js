@@ -2,7 +2,6 @@ var canvas = document.getElementById("canvas")
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var gl = canvas.getContext("webgl2")
-gl.viewport(0,0, )
 var shown = true
 if(!gl){
     alert("Your browser does not support webgl.\n" + "Go to https://get.webgl.org/ to find out more.")
@@ -95,7 +94,7 @@ function populateData(objectData){
             }
     
             points.push(point)
-            console.log("X: " + point.x + " Y: " + point.y + " Velocity: " + point.velocity)
+            //console.log("X: " + point.x + " Y: " + point.y + " Velocity: " + point.velocity)
         }
 
 
