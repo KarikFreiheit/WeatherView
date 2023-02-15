@@ -77,7 +77,7 @@ function populateData(objectData){
     
        
         for(let i = 0; i < length; i++){
-            //Converts X and Y to webGL X and Y of values between 0-1
+            //Converts X and Y to webGL X and Y of values between -1 and 1
             let webX = 2 * (objectData[i].x / width) - 1;
             let webY = 1 - 2 * (objectData[i].y / height);
 

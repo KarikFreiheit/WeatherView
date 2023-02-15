@@ -1,5 +1,11 @@
+:root{
+    --clr-primary: rgb();
+    --clr-secondary: rgb();
+    --font-primary: 'Roboto', sans-serif;
+}
+
 h1{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-primary);
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
@@ -9,4 +15,43 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden;
+}
+
+/* Main Page */
+
+.options{
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.general{
+
+}
+
+.colors{
+
+}
+
+.data{
+
+}
+
+.color-selector{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Input Styling */
+
+label{
+    text-align: center;
+    font-family: var(--font-primary);
 }
