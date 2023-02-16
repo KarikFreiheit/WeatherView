@@ -76,5 +76,5 @@ label{
 }
 option{
     font-family: var(--font-primary);
-    color: var(--font-color-primary);
+    color: black;
 }
