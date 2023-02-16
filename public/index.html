@@ -23,10 +23,10 @@
 
 
 
-    <button class="option-button" style="display: none;" onclick="toggleMenu()">Show</button>
+    <button class="hide-button" style="display: none;" onclick="toggleMenu()">Show</button>
 
     <div class="options">
-        <button class="show" onclick="toggleMenu()">Hide</button>
+        <button class="show-button" onclick="toggleMenu()">Hide</button>
         <div class="general"> 
             <label>Simulation Speed</label>
             <input type="range" min="0" max="100" name="Velocity">
@@ -58,7 +58,12 @@
 
         </div>
         <div class="data">
-            Data
+           
+            
+            <label>Wind</label>
+            <input type="checkbox">
+            <label>Ocean Currents</label>
+            <input type="checkbox">
 
 
         </div>

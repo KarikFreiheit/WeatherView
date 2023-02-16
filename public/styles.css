@@ -31,12 +31,18 @@ html, body {
     background-color: rgba(.5,.5,.5,.5);
 
 }
-.option-button{
+
+
+.hide-button{
     display: block;
     position: fixed;
     top: 0%;
     right: 0;
     margin:10px 10px 0px 0px;
+}
+
+.show-button{
+    width: 100%;
 }
 
 .general{

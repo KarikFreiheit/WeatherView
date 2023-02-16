@@ -130,6 +130,7 @@ function display(vertices){
     //draws points
     gl.drawArrays(gl.POINTS, 0, vertices.length)
 }
+
 //Show or hide points on click
 canvas.addEventListener("click", () => {
     if(shown == true){
@@ -139,6 +140,7 @@ canvas.addEventListener("click", () => {
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
         populateData(data)
+        shown = true
     }else{
         display(vertices)
         shown = true
