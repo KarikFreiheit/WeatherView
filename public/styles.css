@@ -2,6 +2,7 @@
     --clr-primary: rgb();
     --clr-secondary: rgb();
     --font-primary: 'Roboto', sans-serif;
+    --font-color-primary: rgb(255, 255, 255);
 }
 
 h1{
@@ -20,26 +21,37 @@ html, body {
 /* Main Page */
 
 .options{
+    display: block;
     position: fixed;
-    top: 50%;
     right: 0;
-    transform: translate(0, -50%);
-    margin-right: 10px;
+    top: 0%;
+    margin:10px 10px 0px 0px;
     display: flex;
     flex-direction: column;
+    background-color: rgba(.5,.5,.5,.5);
 
+}
+.option-button{
+    display: block;
+    position: fixed;
+    top: 0%;
+    right: 0;
+    margin:10px 10px 0px 0px;
 }
 
 .general{
-
+    display: flex;
+    flex-direction: column;
 }
 
 .colors{
-
+    font-family: var(--font-primary);
+    color: var(--font-color-primary);
 }
 
 .data{
-
+    font-family: var(--font-primary);
+    color: var(--font-color-primary);
 }
 
 .color-selector{
@@ -54,4 +66,9 @@ html, body {
 label{
     text-align: center;
     font-family: var(--font-primary);
+    color: var(--font-color-primary);
+}
+option{
+    font-family: var(--font-primary);
+    color: var(--font-color-primary);
 }

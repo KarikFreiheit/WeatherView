@@ -19,17 +19,26 @@
     <script src="data.js"></script>
     <script src="points.js"></script>
     <script src="map.js"></script>
+    <script src="utils.js"></script>
 
+
+
+    <button class="option-button" style="display: none;" onclick="toggleMenu()">Show</button>
 
     <div class="options">
-        <button class="show">Show</button>
+        <button class="show" onclick="toggleMenu()">Hide</button>
         <div class="general"> 
-            <label>Velocity</label>
+            <label>Simulation Speed</label>
             <input type="range" min="0" max="100" name="Velocity">
+            <label>Particle Size</label>
+            <input type="range" min="1" max="25" name="particleSize">
+            <label>Vector Size</label>
+            <input type="range" min="1" max="10" name="arrowSize">
 
 
         </div>
         <div class="colors">
+            Custimization
             <label>Base Color On:</label>
             <select>
                 <option> Velocity </option>
@@ -38,6 +47,7 @@
 
 
             </select>
+            
             <div class="color-selector">
                 <input type="color">
                 <input type="color">
@@ -48,8 +58,7 @@
 
         </div>
         <div class="data">
-
-            data
+            Data
 
 
         </div>
