@@ -1,4 +1,17 @@
-var canvas = document.getElementById("canvas")
+let app = new PIXI.Application({ width: window.screen.width, height: window.screen.height });
+document.body.appendChild(app.view);
+let sprite = PIXI.Sprite.from('worldMap.png');
+sprite.x = 500;
+sprite.y = 500;
+app.stage.addChild(sprite);
+let elapsed = 0.0;
+app.ticker.add((delta) => {
+    elapsed += delta;
+    sprite.x = 100.0 + Math.cos(elapsed/50.0) * 100.0;
+});
+console.log(sprite.x);
+
+/*var canvas = document.getElementById("canvas")
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var gl = canvas.getContext("webgl2")
@@ -147,3 +160,5 @@ canvas.addEventListener("click", () => {
     }
     
 })
+*/
+
