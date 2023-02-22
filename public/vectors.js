@@ -35,7 +35,7 @@ function populateData(objectData){
     Display(vects);
     
 }
-
+//!CHANGE THIS TO RENDER SVGS SEPERATE FROM PIXIJS 
 function Display(vects){
     let length = vects.length;
     for(let i = 0; i < length; i++){
