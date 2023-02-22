@@ -1,3 +1,4 @@
+*Not needed with the use of pixi.js*
 Convert from X and Y screen coordinates to webgl coordinate system:
     X: ((ScreenWidth / 2) - X) / (ScreenWidth / 2) = X of webgl(1 to -1)
     Y: ((ScreenHeight / 2) - Y) / (ScreenHeight / 2) = Y of webgl(1 to -1)
