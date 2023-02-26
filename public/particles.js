@@ -14,6 +14,7 @@ for(let i = 0; i < count; i++){
     particles.push(particle);
 }
 Display(particles)
+ 
 
 
 function Display(particles){
