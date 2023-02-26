@@ -1,4 +1,4 @@
-let app = new PIXI.Application({ width: window.screen.width, height: window.screen.height });
+var app = new PIXI.Application({ width: window.screen.width, height: window.screen.height });
 document.body.appendChild(app.view);
 const canvas = document.querySelector('canvas');
 let map = PIXI.Sprite.from('worldMap.png');
