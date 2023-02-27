@@ -5,7 +5,7 @@ let map = PIXI.Sprite.from('worldMap.png');
 map.x = 0;
 map.y = 0;
 app.stage.addChild(map);
-
+/*
 let elapsed = 0.0;
 app.ticker.add((delta) => {
     elapsed += delta;
@@ -14,7 +14,7 @@ app.ticker.add((delta) => {
 
 });
 
-
+*/
 var vects = [];
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
@@ -37,9 +37,10 @@ function populateData(objectData){
         vects.push(vector);
             
     }
-    Display(vects);
+    //Display(vects);
     
 }
+/*
 //!CHANGE THIS TO RENDER SVGS SEPERATE FROM PIXIJS 
 function Display(vects){
     let length = vects.length;
@@ -62,3 +63,5 @@ function Display(vects){
 
 
 }
+
+*/
