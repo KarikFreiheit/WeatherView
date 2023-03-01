@@ -62,6 +62,6 @@ function Display(vects){
     }
     console.log("Displayed Vectors");
 
-
+    createParticles();
 }
 
