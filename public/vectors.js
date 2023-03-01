@@ -28,7 +28,8 @@ function populateData(objectData){
 
             x: objectData[i].x,
             y: objectData[i].y,
-            rot: objectData[i].direction,
+            magnitude: objectData[i].maginitude,
+            direction: objectData[i].direction,
             size: 12.5,
             id: i,
             
@@ -37,10 +38,10 @@ function populateData(objectData){
         vects.push(vector);
             
     }
-    //Display(vects);
+    Display(vects);
     
 }
-/*
+
 //!CHANGE THIS TO RENDER SVGS SEPERATE FROM PIXIJS 
 function Display(vects){
     let length = vects.length;
@@ -55,7 +56,7 @@ function Display(vects){
         //Set origin to center
         arrow.anchor.set(0.5);
 
-        arrow.rotation = vects[i].rot;
+        arrow.rotation = vects[i].direction;
         app.stage.addChild(arrow);
 
     }
@@ -64,4 +65,3 @@ function Display(vects){
 
 }
 
-*/

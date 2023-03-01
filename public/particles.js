@@ -1,6 +1,7 @@
 
 let count = 10000;
 
+
 const particleSprites = new PIXI.ParticleContainer(count, {
     scale: true,
     position: true,
@@ -13,44 +14,32 @@ app.stage.addChild(particleSprites);
 var particles = [];
 
 for(let i = 0; i < count; i++){
-    let particle = {
-        x: Math.floor(Math.random() * canvas.width),
-        y: Math.floor(Math.random() * canvas.height),
-        direction: 1.5,
-        magnitude: 1,
-        radius: 3,
-        id: i
-    }
+
+    const particle = PIXI.Sprite.from("particle.png");
+    
+    
+    
+    particle.x =  Math.floor(Math.random() * canvas.width);
+    particle.y =  Math.floor(Math.random() * canvas.height);
+    
+    particle.height = 3;
+    particle.width = 3;
+
+    particle.anchor.set(0.5);
+    particle.id = i;
+    
     particles.push(particle);
+    particleSprites.addChild(particle);
+
 }
-Display(particles)
  
 
-
-function Display(particles){
-
-    let length = particles.length;
-    for(let i = 0; i < length; i++){
-        let particle = PIXI.Sprite.from("particle.png");
-        particle.x = particles[i].x;
-        particle.y = particles[i].y;
-        particle.direction = particles[i].direction;
-        particle.magnitude = particles[i].magnitude;
-        particle.height = particles[i].radius;
-        particle.anchor.set(0.5);
-        particleSprites.addChild(particle);
-        //console.log("X: " + particles[i].x + " Y: " + particles[i].y)
-    }
-
-    console.log("Displayed Particles")
-}
-
 app.ticker.add(() => {
+
+    particles.forEach(sprites => {
+        sprites.x += Math.sin(sprites.direction) * sprites.magnitude;
+        sprites.y += Math.cos(sprites.direction) * sprites.magnitude;
+    });
     
-
-   for(let i = 0; i < particles.length; i++){
-        particles[i].x += Math.sin(particles[i].direction) * particles[i].magnitude;
-        particles[i].y += Math.cos(particles[i].direction) * particles[i].magnitude;
-    }
-
-});
+ 
+ });
