@@ -13,17 +13,17 @@ app.stage.addChild(particleSprites);
 
 var particles = [];
 function createParticles(){
-    console.log(vects[0].direction);
 
     for(let i = 0; i < count; i++){
+
 
         const particle = PIXI.Sprite.from("particle.png");
     
         particle.x =  Math.floor(Math.random() * canvas.width);
         particle.y =  Math.floor(Math.random() * canvas.height);
     
-        particle.direction = vects[0].direction;
-        particle.magnitude = vects[0].magnitude;
+        particle.direction = vects[i].direction;
+        particle.magnitude = vects[i].magnitude;
 
         particle.height = 3;
         particle.width = 3;

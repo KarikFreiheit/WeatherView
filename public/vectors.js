@@ -28,7 +28,7 @@ function populateData(objectData){
 
             x: objectData[i].x,
             y: objectData[i].y,
-            magnitude: objectData[i].maginitude,
+            magnitude: objectData[i].magnitude,
             direction: objectData[i].direction,
             size: 12.5,
             id: i,
@@ -36,7 +36,6 @@ function populateData(objectData){
         };
 
         vects.push(vector);
-            
     }
     Display(vects);
     
@@ -61,7 +60,7 @@ function Display(vects){
 
     }
     console.log("Displayed Vectors");
-
     createParticles();
+
 }
 
