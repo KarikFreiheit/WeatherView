@@ -14,3 +14,26 @@ function toggleMenu(){
         toggled = true;
     }
 }
+
+
+var count = document.querySelector("particle-count").value;
+
+function changeCount(number){
+    count = number;
+}
+
+function refreshData(){
+    loadJSON();
+}
+
+indow.addEventListener("keydown", function(event){
+
+    if(event.key == "n"){
+        map.width /= 2;
+        map.height /= 2;
+    }
+
+    if(event.key == "r"){
+        refreshData();
+    }
+});
