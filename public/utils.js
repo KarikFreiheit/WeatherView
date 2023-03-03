@@ -17,10 +17,13 @@ function toggleMenu(){
 
 
 
-function changeCount(number){
+function changeCountText(number){
     count = number;
-    document.getElementsByClassName('.count-textInput').value=count; 
-    document.getElementsByClassName('.count-rangeInput').value=count; 
+    document.querySelector('.count-textInput').value=count; 
+}
+function changeCountRange(number){
+    count = number;
+    document.querySelector('.count-rangeInput').value=count; 
 }
 
 function refreshData(){
@@ -29,15 +32,13 @@ function refreshData(){
 }
 
 function destroyParticles(){
-    let i = 0; 
-    for(i = 0; i < particles.length; i++){
-    
-        app.stage.removeChild(particles[i]);
-        particles[i].destroy(true);
-        particles.splice(i, 1);
+    let i = 0;
+    particles.forEach((particle) => {
+        particles.splice(i, 1); 
+        particleSprites.removeChild(particle);
 
         i++;
-    };
+    });
     console.log(i + " Particles Destoyed");
 
 
@@ -49,12 +50,9 @@ window.addEventListener("keydown", function(event){
         map.width /= 2;
         map.height /= 2;
     }
-
-    if(event.key == "r"){
-        refreshData();
-
-    }
+    
     if(event.key == "Enter"){
         refreshData();
+
     }
 });

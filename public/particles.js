@@ -7,6 +7,7 @@ const particleSprites = new PIXI.ParticleContainer(count, {
     uvs: true,
 });
 app.stage.addChild(particleSprites);
+count = 10000;
 
 var particles = [];
 function createParticles(){
@@ -33,17 +34,17 @@ function createParticles(){
 
        
 
-    }
+}
     
-    app.ticker.add(() => {
-
-        particles.forEach((particle) => {
-            particle.x += Math.sin(particle.direction) * particle.magnitude;
-            particle.y += Math.cos(particle.direction) * particle.magnitude;
-        });
-       
-     });
     
 }   
- 
+
+app.ticker.add(() => {
+
+    particles.forEach((particle) => {
+        particle.x += Math.sin(particle.direction) * particle.magnitude;
+        particle.y += Math.cos(particle.direction) * particle.magnitude;
+    });
+   
+ });
 
