@@ -5,6 +5,8 @@ let map = PIXI.Sprite.from('worldMap.png');
 map.x = 0;
 map.y = 0;
 app.stage.addChild(map);
+var count = document.getElementsByClassName(".particle-count").value;
+
 /*
 let elapsed = 0.0;
 app.ticker.add((delta) => {

@@ -16,17 +16,34 @@ function toggleMenu(){
 }
 
 
-var count = document.querySelector("particle-count").value;
 
 function changeCount(number){
     count = number;
+    document.getElementsByClassName('.count-textInput').value=count; 
+    document.getElementsByClassName('.count-rangeInput').value=count; 
 }
 
 function refreshData(){
+    destroyParticles();
     loadJSON();
 }
 
-indow.addEventListener("keydown", function(event){
+function destroyParticles(){
+    let i = 0; 
+    for(i = 0; i < particles.length; i++){
+    
+        app.stage.removeChild(particles[i]);
+        particles[i].destroy(true);
+        particles.splice(i, 1);
+
+        i++;
+    };
+    console.log(i + " Particles Destoyed");
+
+
+}
+
+window.addEventListener("keydown", function(event){
 
     if(event.key == "n"){
         map.width /= 2;
@@ -34,6 +51,10 @@ indow.addEventListener("keydown", function(event){
     }
 
     if(event.key == "r"){
+        refreshData();
+
+    }
+    if(event.key == "Enter"){
         refreshData();
     }
 });
