@@ -10,7 +10,6 @@ const particleSprites = new PIXI.ParticleContainer(1000000, {
 app.stage.addChild(particleSprites);
 
 var particles = [];
-count = 10000;
 function createParticles(){
     for(let i = 0; i < count; i++){
 
@@ -23,8 +22,8 @@ function createParticles(){
         particle.direction = vects[0].direction;
         particle.magnitude = vects[0].magnitude;
 
-        particle.height = 3;
-        particle.width = 3;
+        particle.height = size;
+        particle.width = size;
 
         particle.anchor.set(0.5);
         particle.id = i;

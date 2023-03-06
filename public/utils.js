@@ -16,7 +16,7 @@ function toggleMenu(){
 }
 
 
-
+//Particle Count
 function changeCountText(number){
     count = number;
     document.querySelector('.count-textInput').value=count; 
@@ -25,6 +25,16 @@ function changeCountRange(number){
     count = number;
     document.querySelector('.count-rangeInput').value=count; 
 }
+//Particle Size
+function changeSizeText(number){
+    size = number;
+    document.querySelector('.size-textInput').value=size; 
+}
+function changeSizeRange(number){
+    size = number;
+    document.querySelector('.size-rangeInput').value=size; 
+}
+
 
 function refreshData(){
     destroyParticles();
@@ -34,9 +44,7 @@ function refreshData(){
 function destroyParticles(){
     
     particleSprites.removeChildren();
-    for(let i = 0; i < particles.length; i++){
-        particles.splice(i, 1); 
-    }
+    particles = [];
 
 }
 

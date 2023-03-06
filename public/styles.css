@@ -78,3 +78,11 @@ option{
     font-family: var(--font-primary);
     color: black;
 }
+.range-container{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+}
+input[type="text"]{
+    max-width: 6rem;
+}

@@ -4,7 +4,6 @@ async function loadJSON(){
     const objectData = fetch('vectors.json').then(function(response){
         response.json().then(function(data) {
             populateData(data)
-            console.log(data);
         });
     }).catch(function(error) {
         console.log('Fetch Error:', error);

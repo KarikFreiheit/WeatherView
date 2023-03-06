@@ -5,8 +5,9 @@ let map = PIXI.Sprite.from('worldMap.png');
 map.x = 0;
 map.y = 0;
 app.stage.addChild(map);
-var count = document.getElementsByClassName(".particle-count").value;
-
+//Default setting values
+var count = 10000;
+var size = 3;
 /*
 let elapsed = 0.0;
 app.ticker.add((delta) => {
@@ -20,7 +21,6 @@ app.ticker.add((delta) => {
 var vects = [];
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
-    console.log("Vector Objects Populated");
 
     let length = objectData.length;
        
@@ -43,7 +43,7 @@ function populateData(objectData){
     
 }
 
-//!CHANGE THIS TO RENDER SVGS SEPERATE FROM PIXIJS 
+//!CHANGE THIS TO RENDER SVGS SEPERATE FROM PIXIJS in order to fix scaling issues
 function Display(vects){
     let length = vects.length;
     for(let i = 0; i < length; i++){
@@ -61,7 +61,6 @@ function Display(vects){
         app.stage.addChild(arrow);
 
     }
-    console.log("Displayed Vectors");
     createParticles();
 
 }

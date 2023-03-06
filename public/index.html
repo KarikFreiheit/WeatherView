@@ -31,12 +31,16 @@
             <input type="range" min="0" max="100" name="Velocity">
 
             <label>Particle Size</label>
-            <input type="range" min="1" max="25" name="particleSize">
+            <div class="range-container">
+                <input type="text" class="size-textInput" value="3" oninput="changeSizeRange(this.value)"> 
+                <input type="range" min="2" max="10" value="3" name="particleSize" class=".size-rangeInput" oninput="changeSizeText(this.value)">
+            </div>
 
-
-            <label>Particle Count</label>           
-            <input type="range" min="1" max="1000000" value="10000" name="particleCount" class="count-rangeInput" oninput="changeCountText(this.value)">
-            <input type="text" class="count-textInput" value="10000" oninput="changeCountRange(this.value)"> 
+            <label>Particle Count</label>   
+            <div class="range-container">        
+                <input type="text" class="count-textInput" value="10000" oninput="changeCountRange(this.value)"> 
+                <input type="range" min="1000" max="1000000" value="10000" name="particleCount" class="count-rangeInput" oninput="changeCountText(this.value)">
+            </div>
 
             <label>Vector Size</label>
             <input type="range" min="1" max="10" name="arrowSize">
@@ -61,6 +65,7 @@
 
             </div>
             
+            <button class="submit-button" onpointerup="refreshData()">Refresh</button>
 
         </div>
         <div class="data">
