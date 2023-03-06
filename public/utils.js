@@ -48,6 +48,7 @@ function destroyParticles(){
 
 }
 
+//Hotkeys
 window.addEventListener("keydown", function(event){
 
     if(event.key == "n"){

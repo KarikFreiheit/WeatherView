@@ -8,16 +8,7 @@ app.stage.addChild(map);
 //Default setting values
 var count = 10000;
 var size = 3;
-/*
-let elapsed = 0.0;
-app.ticker.add((delta) => {
-    elapsed += delta;
-    map.width = canvas.width;
-    map.height = canvas.height;
 
-});
-
-*/
 var vects = [];
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
