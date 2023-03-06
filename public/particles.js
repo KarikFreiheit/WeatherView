@@ -1,5 +1,6 @@
-
-const particleSprites = new PIXI.ParticleContainer(count, {
+const particleSprites = new PIXI.ParticleContainer(1000000, {
+    autoResize: true,
+    maxSize: 1000000,
     scale: true,
     position: true,
     rotation: true,
@@ -7,9 +8,9 @@ const particleSprites = new PIXI.ParticleContainer(count, {
     uvs: true,
 });
 app.stage.addChild(particleSprites);
-count = 10000;
 
 var particles = [];
+count = 10000;
 function createParticles(){
     for(let i = 0; i < count; i++){
 
@@ -20,7 +21,7 @@ function createParticles(){
         particle.y =  Math.floor(Math.random() * canvas.height);
     
         particle.direction = vects[0].direction;
-        particle.magnitude = 0;
+        particle.magnitude = vects[0].magnitude;
 
         particle.height = 3;
         particle.width = 3;

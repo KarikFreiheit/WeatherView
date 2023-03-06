@@ -32,15 +32,11 @@ function refreshData(){
 }
 
 function destroyParticles(){
-    let i = 0;
-    particles.forEach((particle) => {
+    
+    particleSprites.removeChildren();
+    for(let i = 0; i < particles.length; i++){
         particles.splice(i, 1); 
-        particleSprites.removeChild(particle);
-
-        i++;
-    });
-    console.log(i + " Particles Destoyed");
-
+    }
 
 }
 
