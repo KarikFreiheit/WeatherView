@@ -9,6 +9,7 @@ app.stage.addChild(map);
 var count = 10000;
 var size = 3;
 
+
 var vects = [];
 //Parse Json into objects, recieves data from data.js loadJSON function
 function populateData(objectData){
