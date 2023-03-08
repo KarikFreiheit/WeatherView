@@ -58,6 +58,8 @@ html, body {
 .data{
     font-family: var(--font-primary);
     color: var(--font-color-primary);
+    display: flex;
+    flex-direction: column;
 }
 
 .color-selector{

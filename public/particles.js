@@ -35,10 +35,7 @@ function createParticles(){
 
         particleSprites.addChild(particle);
 
-       
-
 }
-    
     
 }   
 
