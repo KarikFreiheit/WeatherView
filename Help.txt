@@ -1,3 +1,5 @@
 TODO:
 1. Make LAT/LONG Conversion server side
 2. Find a new map background, MERCATOR PROJECTION
+3. SIN, COS on data conversion, server side not on every update. Then just add the x and y vector every update
+4. 2D Array of Vectors, 360 by 180 for every degree. Every update check if a particles long and lat is with what element in the array then apply velocity. 

@@ -32,7 +32,7 @@ function populateData(objectData){
             //Converts into x and y from lat and long
             //!!!!Change to convert on server side
             x: (long + 180) * (width/360),
-            y: (height/2)-(height*merc/(Math.PI * 2)),
+            y: (height/2)-(width*merc/(Math.PI * 2)),
             magnitude: objectData[i].magnitude,
             direction: objectData[i].direction,
             size: 12.5,
@@ -53,22 +53,18 @@ function to2xArray(array){
     //Number of pixels between each vector 
     let n = Math.sqrt((width * height) / count)
     let yVector = height / n;
-
-    var newVects = [];
+    let max = Math.round(array.length.y);
     
-    //Fill newVects 2d array by pushing yVector number of arrays into newVects
-    for(let i = 0; i < array.length; i+=yVector){
-        newVects.push(array.slice(i, i+yVector));
-    }
 
+    for(let i = 0; i < width; i++){
+        for(let j = 0; j < height; j++){
+
+        }
+    }
+    
+    
     //It either fills the arrays with the wrong values in the x or the wrong values in the y. It should have the same values in the same rows as it shows onscrren otherwise the particle will go in weird directions.
-    console.log(vects);
-    console.log(newVects[19][5].x + " " + newVects[20][5].x + " " + newVects[21][5].x);
-    console.log(newVects[19][6].x + " " + newVects[20][6].x + " " + newVects[21][6].x);
-    console.log(newVects[19][7].x + " " + newVects[20][7].x + " " + newVects[21][7].x);
-    console.log(newVects[19][5].y + " " + newVects[20][5].y + " " + newVects[21][5].y);
-    console.log(newVects[19][6].y + " " + newVects[20][6].y + " " + newVects[21][6].y);
-    console.log(newVects[19][7].y + " " + newVects[20][7].y + " " + newVects[21][7].y);
+    
     console.log(newVects);
 }
 
